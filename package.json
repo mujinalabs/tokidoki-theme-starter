@@ -1,0 +1,9 @@
+{
+    "name": "tokidoki-starter",
+    "version": "1.0.0",
+    "author": "Haruyuki Tanukiji <haruyuki@tanu.ch>",
+    "tokidokiEngine": {
+        "type": "schedule-template",
+        "engineVersion": "1.0.0"
+    }
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Bulma Framework -->
+<link rel="stylesheet" href="/assets/bulma/bulma.min.css">
+
+<!-- Main Styling sheet -->
+<link rel="stylesheet" href="/assets/main.css">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<body>
+    <section class="section is-small main-container mt-6">
+        <div class="container">
+            <header class="mb-6">
+                <p class="mb-0">
+                    <img src={{profile.customization.profileImg}} class="is-inline-block profile-pic-title-img">
+                    <span class="has-text-weight-semibold is-size-2 has-text-grey-dark profile-pic-title-text">{{profile.displayName}}</span>
+                </p>
+                <h1 class="title has-text-weight-bold schedule-title">Stream Schedule <small
+                        class="has-text-primary is-size-3">{{toHumanReadableDate scheduleStartDate}} ~
+                        {{toHumanReadableDate scheduleEndDate}} <span class="is-size-4 has-text-grey-dark">({{timezoneOffset}})</span></small></h1>
+            </header>
+            <div>
+                <div class="card day-card mb-2 {{#unless scheduleData.monday}}nulled{{/unless}}">
+                    <div class="card-content">
+                        <div class="columns is-vcentered">
+                            <div class="column is-one-quarter">
+                                <p class="title">Monday</p>
+                            </div>
+                            <div class="column">
+                                {{#each scheduleData.monday}}
+                                <div class="is-size-4 mb-1">
+                                    <span class="tag is-large mr-2 is-light has-text-weight-medium">{{toHumanReadableTime this.time.start @root.timezone}}</span>
+                                    <span class="has-text-weight-medium">{{this.name}}</span>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card day-card mb-2 {{#unless scheduleData.tuesday}}nulled{{/unless}}">
+                    <div class="card-content">
+                        <div class="columns is-vcentered">
+                            <div class="column is-one-quarter">
+                                <p class="title">Tuesday</p>
+                            </div>
+                            <div class="column">
+                                {{#each scheduleData.tuesday}}
+                                <div class="is-size-4 mb-1">
+                                    <span class="tag is-large mr-2 is-light has-text-weight-medium">{{toHumanReadableTime this.time.start @root.timezone}}</span>
+                                    <span class="has-text-weight-medium">{{this.name}}</span>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card day-card mb-2 {{#unless scheduleData.wednesday}}nulled{{/unless}}">
+                    <div class="card-content">
+                        <div class="columns is-vcentered">
+                            <div class="column is-one-quarter">
+                                <p class="title">Wednesday</p>
+                            </div>
+                            <div class="column">
+                                {{#each scheduleData.wednesday}}
+                                <div class="is-size-4 mb-1">
+                                    <span class="tag is-large mr-2 is-light has-text-weight-medium">{{toHumanReadableTime this.time.start @root.timezone}}</span>
+                                    <span class="has-text-weight-medium">{{this.name}}</span>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card day-card mb-2 {{#unless scheduleData.thursday}}nulled{{/unless}}">
+                    <div class="card-content">
+                        <div class="columns is-vcentered">
+                            <div class="column is-one-quarter">
+                                <p class="title">Thursday</p>
+                            </div>
+                            <div class="column">
+                                {{#each scheduleData.thursday}}
+                                <div class="is-size-4 mb-1">
+                                    <span class="tag is-large mr-2 is-light has-text-weight-medium">{{toHumanReadableTime this.time.start @root.timezone}}</span>
+                                    <span class="has-text-weight-medium">{{this.name}}</span>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card day-card mb-2 {{#unless scheduleData.friday}}nulled{{/unless}}">
+                    <div class="card-content">
+                        <div class="columns is-vcentered">
+                            <div class="column is-one-quarter">
+                                <p class="title">Friday</p>
+                            </div>
+                            <div class="column">
+                                {{#each scheduleData.friday}}
+                                <div class="is-size-4 mb-1">
+                                    <span class="tag is-large mr-2 is-light has-text-weight-medium">{{toHumanReadableTime this.time.start @root.timezone}}</span>
+                                    <span class="has-text-weight-medium">{{this.name}}</span>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card day-card mb-2 {{#unless scheduleData.saturday}}nulled{{/unless}}">
+                    <div class="card-content">
+                        <div class="columns is-vcentered">
+                            <div class="column is-one-quarter">
+                                <p class="title">Saturday</p>
+                            </div>
+                            <div class="column">
+                                {{#each scheduleData.saturday}}
+                                <div class="is-size-4 mb-1">
+                                    <span class="tag is-large mr-2 is-light has-text-weight-medium">{{toHumanReadableTime this.time.start @root.timezone}}</span>
+                                    <span class="has-text-weight-medium">{{this.name}}</span>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card day-card mb-2 {{#unless scheduleData.sunday}}nulled{{/unless}}">
+                    <div class="card-content">
+                        <div class="columns is-vcentered">
+                            <div class="column is-one-quarter">
+                                <p class="title">Sunday</p>
+                            </div>
+                            <div class="column">
+                                {{#each scheduleData.sunday}}
+                                <div class="is-size-4 mb-1">
+                                    <span class="tag is-large mr-2 is-light has-text-weight-medium">{{toHumanReadableTime this.time.start @root.timezone}}</span>
+                                    <span class="has-text-weight-medium">{{this.name}}</span>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section has-background-white pt-5 pb-5">
+        <div class="container has-text-light">
+            <div class="has-text-centered mb-3">
+                <p class="has-text-dark has-text-weight-medium">vtubersdb.tanu.ch/<span
+                        class="has-text-primary">~{{profile.slug}}</span></p>
+            </div>
+            <div class="level has-text-black">
+                {{#ifNotEquals profile.socials.twitter ''}}
+                <div class="level-item">
+                    <p class="has-text-weight-medium is-size-4"><i
+                            class="fa-brands fa-twitter"></i>&ensp;@{{profile.socials.twitter}}</p>
+                </div>
+                {{/ifNotEquals}}
+
+                {{#if profile.socials.youtube}}
+                <div class="level-item">
+                    <p class="has-text-weight-medium is-size-4"><i
+                            class="fa-brands fa-youtube"></i>&ensp;@{{profile.socials.youtube}}</p>
+                </div>
+                {{/if}}
+
+                {{#if profile.socials.twitch}}
+                <div class="level-item">
+                    <p class="has-text-weight-medium is-size-4"><i
+                            class="fa-brands fa-twitch"></i>&ensp;/{{profile.socials.twitch}}</p>
+                </div>
+                {{/if}}
+
+                {{!-- {{#if profile.socials.discord}}
+                <div class="level-item">
+                    <p><i class="fa-brands fa-discord"></i>&ensp;{{scheduleSocialLinkFormat profile.socials.discord}}
+                    </p>
+                </div>
+                {{/if}} --}}
+            </div>
+        </div>
+    </section>
+    <section class="section is-small pt-2 pb-2 has-background-black-bis">
+        <div class="container has-text-centered">
+            <p class="has-text-weight-medium has-text-grey">VTubersDB <span class="has-text-weight-bold">Tokidoki</span> &mdash; Starter Template</p>
+        </div>
+    </section>
+</body>
+
+</html>
